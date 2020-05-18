@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="Container">
-      Syleset
+      My Social media app
     </div>
   );
 }
