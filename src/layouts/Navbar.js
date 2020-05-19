@@ -11,7 +11,7 @@ function NavItem(props) {
 
 class Navbar extends Component {
   render() {
-    
+
     return (
         <div className="menu">
           <div className="title">MENU</div>

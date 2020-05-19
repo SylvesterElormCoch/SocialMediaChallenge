@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import data from "../data/DALI_Data.json";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faQuoteLeft, faQuoteRight, faMapMarker} from '@fortawesome/free-solid-svg-icons'
+
+
 
 function UserSnippet(props) {
-  const { name, birthday, home, quote, picture } = props;
+  let { name, birthday, home, quote, picture } = props;
 
+  /* strip end quotes */
+  quote =  quote.toString().replace(/['"]+/g, '');
+
+  console.log(home)
   return (
     <div className="card">
       <header className="card-title">
@@ -16,14 +24,16 @@ function UserSnippet(props) {
         </div>
         <div className="card-title-info">
           <div className="card-title-username">{name}</div>
-          <div className="card-title-location">{home}</div>
+          <div className="card-title-location"><FontAwesomeIcon className="marker" icon={faMapMarker}/> {home} </div>
         </div>
       </header>
       <section className="card-section">
-        <div className="card-section-quote">{quote}</div>
+       {quote ?  <div className="card-section-quote">
+         <FontAwesomeIcon icon={faQuoteLeft}/> {quote} <FontAwesomeIcon icon={faQuoteRight}/>  </div>
+       : null}
       </section>
       <footer className="card-section-footer">
-        <span>{birthday}</span>
+        <span> {birthday} </span>
       </footer>
     </div>
   );
@@ -49,6 +59,7 @@ export default class HomeScreen extends Component {
             quote={member.quote}
             picture={member.picture}
             role={member.role}
+            home={member.home}
           />
         ))}
       </div>
