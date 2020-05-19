@@ -2,13 +2,18 @@ import React, { Component } from "react";
 import data from "../data/DALI_Data.json";
 
 function UserSnippet(props) {
-  const { name, birthday, home, quote } = props;
+  const { name, birthday, home, quote, picture } = props;
 
   return (
-
     <div className="card">
       <header className="card-title">
-        <div className="card-title-img"></div>
+        <div className="card-title-img-contaier">
+          <img
+            className="card-title-img"
+            src={picture}
+            alt={`${name}'s Profile Pic`}
+          ></img>
+        </div>
         <div className="card-title-info">
           <div className="card-title-username">{name}</div>
           <div className="card-title-location">{home}</div>
@@ -28,17 +33,15 @@ export default class HomeScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: data
+      items: data,
     };
   }
-
-
 
   render() {
     let members = this.state.items;
     return (
       <div className=".homescreen">
-        {members.map((member, index) =>
+        {members.map((member, index) => (
           <UserSnippet
             key={index}
             name={member.name}
@@ -47,8 +50,7 @@ export default class HomeScreen extends Component {
             picture={member.picture}
             role={member.role}
           />
-        )
-        }
+        ))}
       </div>
     );
   }
