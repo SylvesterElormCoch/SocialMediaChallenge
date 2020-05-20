@@ -16,17 +16,11 @@ class UserSnippet extends Component {
     this.state = {};
   }
 
-  // let { name, role, home, quote, picture } = props;
-
-  render() {
-    let { name, role, home, quote, picture } = this.props;
-    /* strip end quotes */
-    quote = quote.toString().replace(/['"]+/g, "");
-
+  setIconBasedOnRole(role){
     /* set icon based on role logic */
     let icon = 0;
     if (role.toString().includes("Developer")) {
-       icon = 1;
+      icon = 1;
     }
 
     if (role.toString().includes("Designer")) {
@@ -39,8 +33,16 @@ class UserSnippet extends Component {
     if (role.toString().includes("Video")) {
       icon = 4;
     }
+    return icon;
+  }
+
+  render() {
+    let { name, role, home, quote, picture } = this.props;
+    quote = quote.toString().replace(/['"]+/g, ""); /* strip end quotes */
+    let icon = this.setIconBasedOnRole(role);
+
     return (
-      <div className="card">
+      <div className="card" onClick={() => this.props.onCardClick(this.props.id)}>
         <header className="card-title">
           <div className="card-title-img-contaier">
             <img
@@ -58,8 +60,8 @@ class UserSnippet extends Component {
               <FontAwesomeIcon
                 className="role"
                 icon={icon === 1 ? faUser :
-                      icon === 2 ? faPenNib :
-                      icon === 3 ? faTasks :
+                  icon === 2 ? faPenNib :
+                    icon === 3 ? faTasks :
                       faVideo}
               /> {role}
             </div>
@@ -68,7 +70,7 @@ class UserSnippet extends Component {
         <section className="card-section">
           {quote ? (
             <div className="card-section-quote">
-              <FontAwesomeIcon icon={faQuoteLeft} /> {quote}
+              <FontAwesomeIcon icon={faQuoteLeft} />{" "} {quote}  {" "}
               <FontAwesomeIcon icon={faQuoteRight} />
             </div>
           ) : null}
