@@ -13,6 +13,7 @@ class App extends Component {
     };
 
     this.onCardClick = this.onCardClick.bind(this);
+    this.onMenuClick = this.onMenuClick.bind(this);
   }
 
   onCardClick(key) {
@@ -24,16 +25,29 @@ class App extends Component {
     console.log("card clicked at " + key);
   }
 
+  onMenuClick(menu){
+    if (menu.toString() === "Explore"){
+        if (!this.state.onExplorePage){
+          this.setState(state => ({
+            onExplorePage: !state.onExplorePage,
+          }));
+          console.log("Menu clicked Awwo at " + menu);
+        }
+    }else if (menu.toString === "Sign Out"){
+        console.log("Menu clicked at " + menu);
+    }
+    console.log("Menu clicked at " + menu);
+  }
+
 
   render() {
-    let { data , currentProfile} = this.state;
+    let { data, currentProfile} = this.state;
     return (
       <div className="Container">
-        <Navbar />
+        <Navbar onMenuClick={this.onMenuClick} />
         {this.state.onExplorePage ? (
           <HomeScreen
             data={this.state.data}
-            onExplorePage={this.state.OnExplorePage}
             onCardClick={this.onCardClick}
           />
         ) : (

@@ -16,6 +16,8 @@ class UserSnippet extends Component {
     this.state = {};
   }
 
+  
+
   setIconBasedOnRole(role){
     /* set icon based on role logic */
     let icon = 0;
