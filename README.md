@@ -7,7 +7,7 @@ This project was built as part of one of the DALI lab developer challenges. You 
 You can run `npm start` from the terminal to build and run the project on your local server.
 
 ### Basic Idea
-With data about members of teh dali lab, I made a simple social media UI page with a drawer navigation. One can click on the profile snippet on the `Explore` screen to view the `user profile` in detail and navigate back through the side menu.
+With data about members of dali lab, I made a simple social media UI page with a drawer navigation. One can click on the profile snippet on the `Explore` screen to view the `user profile` in detail and navigate back through the side menu.
 
 ### What went well
 I enjoyed using react and thinking about how to structure different UI components and state information. I also got to try on some interesting UI and CSS animations.
